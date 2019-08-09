@@ -16,25 +16,29 @@ void setup()
 {
   println(Serial.list()); // show the available serial ports
   myPort = new Serial(this, Serial.list()[1], 9600); // open port 0 in the list
-  myPort.bufferUntil('\n');
 }
 void draw()
 {
+  if(myPort.available() > 0) {
+     val = myPort.readStringUntil('\n');
+     if(val != null){
+       postRequest(val.trim(),0);
+     }
 
-  while (myPort.available() > 0) {
-    String inBuffer = myPort.readString();  
-    println(inBuffer);
-    if (inBuffer != null) {
+    
+    //String inBuffer = myPort.readString();  
+    //println(inBuffer);
+    //if (inBuffer != null) {
 
       // TODOCHECK LENGTH OF STRING 
-      println("Stringlength :" + inBuffer.length());
-      String inBuffer2 = inBuffer.trim();
-      postRequest(inBuffer2, 0); 
+      //println("Stringlength :" + inBuffer.length());
+      //String inBuffer2 = inBuffer.trim();
+      //postRequest(inBuffer2, 0); 
 
-      println(statusCode); // status code returned from post request
-        }
-      }
-    }
+      //println(statusCode); // status code returned from post request
+        //}
+  }
+}
 
 
     //void serialEvent( Serial myPort) {
@@ -78,11 +82,12 @@ void draw()
 
 
     void postRequest(String message, int i) {
-      PostRequest post = new PostRequest("https://babbelbord.herokuapp.com/api/category/");
+      //PostRequest post = new PostRequest("https://babbelbord.herokuapp.com/api/category/");
+      PostRequest post = new PostRequest("http://localhost:8081/api/category/");
       post.addHeader("Content-Type", "application/json");
       saveCategory = message;
       
-      System.out.println("Data recieved");
+      System.out.println("Data received");
 
       if (message.equals("Familie") || 
         message.equals("Liefde") || 
@@ -99,18 +104,18 @@ void draw()
       System.out.println("Posting to server");
       post.send();
       //IF ERROR MESSAGE (HTTP  CODE RESENT DATA
-      statusCode = post.getStatusCodeHTTP();
+      //statusCode = post.getStatusCodeHTTP();
       
-      System.out.println(statusCode);
+      //System.out.println(statusCode);
       
-      if(i<50){
-        statusCode = 404;
-      }
+      //if(i<50){
+        //statusCode = 404;
+      //}
       
-      if(statusCode == 404 && i< 999){
-        postRequest(saveCategory, i++);
-      }
-      System.out.println(statusCode + "  "  + "Loop: " + i);
+      //if(statusCode == 404 && i< 999){
+        //postRequest(saveCategory, i++);
+      //}
+      //System.out.println(statusCode + "  "  + "Loop: " + i);
       System.out.println("Response Status Code:" + statusCode );
       System.out.println("Response Content:" + post.getContent());
 
