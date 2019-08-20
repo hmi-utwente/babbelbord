@@ -10,18 +10,10 @@ void saveCategory(String category) {
   String category_ = category;
   Serial.println(category_);
   OldCategory = category_;
-
-
-
 }
 
-
-
-
 //Uses global variable CHECK
-
 void PositionToNewCategory() {
-
   for (int i = 1; i < 6; i++) {// Outputs(rows)
     for (int j = 1; j < 6; j++) { // Inputs(column)
       if (FinalCheck[i][j] == HIGH) {
@@ -29,6 +21,7 @@ void PositionToNewCategory() {
           case 1:
             switch (j) {
               case (1):
+                saveCategory("Gaan");
                 break;
               case (2):
                 saveCategory("Familie");
@@ -42,7 +35,6 @@ void PositionToNewCategory() {
               case (5):
                 saveCategory("Tienertijd");
                 break;
-
             }
             break;
           case 2:
@@ -62,12 +54,8 @@ void PositionToNewCategory() {
               case (5):
                 saveCategory("Ga");
                 break;
-
             }
             break;
-
-
-
           case 3:
             switch (j) {
               case (1):
@@ -85,10 +73,8 @@ void PositionToNewCategory() {
               case (5):
                 saveCategory("Liefde");
                 break;
-
             }
             break;
-
           case 4:
             switch (j) {
               case (1):
@@ -106,7 +92,6 @@ void PositionToNewCategory() {
               case (5):
                 saveCategory("Familie");
                 break;
-
             }
             break;
           case 5:
@@ -119,17 +104,13 @@ void PositionToNewCategory() {
                 break;
               case (3):
                 saveCategory("Tienertijd");
-
                 break;
               case (4):
                 saveCategory("Kindertijd");
                 break;
-              case (5):
-
-                //EXCEPTION
+              case (5):                
                 saveCategory("Hobbies");
                 break;
-
             }
             break;
         }
@@ -138,15 +119,3 @@ void PositionToNewCategory() {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-

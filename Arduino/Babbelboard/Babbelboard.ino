@@ -1,13 +1,9 @@
 
 //row1:White-cable: Gaan,familie, liefde, Het is je gelukdsag, tienertijd
-//row2:           :Kindertijd,Hobby,Familie,Liefde,Ga terug naar je vorige kleurvak
-//row3:           :Tienertijd,Kindertijd,Hobby,Familie,Liefde
-//row4:           :Verwijder een verdiende kleurkaart,Tienertijd,Kindertijd,Hobby,Familie
-//row5:           :Liefde,Geef de laast verdiende kaart aan de vorige speler,Tienertijd,Kindertijd,Hobby
-
-
-
-
+//row2:           :Kindertijd,Hobbies,Familie,Liefde,Ga terug naar je vorige kleurvak
+//row3:           :Tienertijd,Kindertijd,Hobbies,Familie,Liefde
+//row4:           :Verwijder een verdiende kleurkaart,Tienertijd,Kindertijd,Hobbies,Familie
+//row5:           :Liefde,Geef de laast verdiende kaart aan de vorige speler,Tienertijd,Kindertijd,Hobbies
 
 //row 1:
 //------/  ----/ ----/ ------/  ---/  -----
@@ -80,37 +76,6 @@ void setup() {
 
 }
 
-
-
-
-//    if (statusCode == 404 ||  statusCode == 400 ) {
-//      Serial.println(OldCategory);
-//
-//    }
-//    else {
-//      Serial.println("Arduino" + statusCode);
-//      // Read position and sent position
-//    }
-
 void loop() {
   readPosition();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
