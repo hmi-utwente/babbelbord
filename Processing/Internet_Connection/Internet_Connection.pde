@@ -30,6 +30,7 @@ void draw()
 void postRequest(String message) {
       PostRequest post = new PostRequest(url);
       post.addHeader("Content-Type", "application/json");      
+      System.out.println("Received message: " + message);
       if (message.equals("Familie") ||
           message.equals("Liefde") || 
           message.equals("Tienertijd") || 
@@ -41,11 +42,32 @@ void postRequest(String message) {
           case "START":
             message = "S";
             break;
+          case "Gaan":
+            message = "S";
+            break;
+          case "Geef":
+            message = "GE";
+            break;
+          case "Ga":
+            message = "G";
+            break;
+          case "Het":
+            message = "H";
+            break;
+          case "Verwijder":
+            message = "V";
+            break;
+          case "MOVEPAWN":
+            message = "MP";
+            break;
+          case "MOVEDPAWNTOOFAST":
+            message = "MPF";
+            break;
           default:
             System.out.println("Unknown message: " + message);          
         }
         post.addJson("{\"special\": \"" + message + "\"}");
       }
-      System.out.println("Posting to server");
+      System.out.println("Posting to server: " + message);
       post.send();
     }
